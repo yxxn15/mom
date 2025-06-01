@@ -10,7 +10,7 @@
   <div class="container">
   <h1>🎉 사랑하는 엄마의 생일을 축하합니다! 🎉</h1>
   <div class="photo-wrapper">
-    <img src="mom_photo.jpg" alt="엄마 사진" class="main-photo">
+    <img src="images/mom_photo.jpg" alt="엄마 사진" class="main-photo">
     <button onclick="openModal()">💌 편지를 확인해주세용 💌</button>
   </div>
 </div>
@@ -92,34 +92,19 @@ function checkQuiz() {
 엄마에게 드릴 축하 선물은 ${prize}입니다.
 소윤이에게 선물을 받아가세요!`);
 
-  // 날짜 생성
-  const today = new Date();
-  const year = today.getFullYear();
-  const month = String(today.getMonth() + 1).padStart(2, '0');
-  const day = String(today.getDate()).padStart(2, '0');
-
-  // 파일 이름
-  const fileName = `엄마퀴즈답변_${year}-${month}-${day}.txt`;
-
-  // 답변 텍스트
-  let text = `엄마가 푼 퀴즈 답변\n\n`;
-  text += `1번: ${q1Answer}\n`;
-  text += `2번: ${q2Answer}\n`;
-  text += `3번: ${q3}\n\n`;
-  text += `맞힌 개수: ${correct}문제\n`;
-  text += `선물: ${prize}\n`;
-  text += `제출 날짜: ${year}-${month}-${day}\n`;
-
-  // 파일 다운로드
-  const blob = new Blob([text], { type: "text/plain" });
-  const url = URL.createObjectURL(blob);
-  const link = document.createElement("a");
-  link.href = url;
-  link.download = fileName;
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-  URL.revokeObjectURL(url);
+  // 🔥 3번 답변 서버로 전송
+  fetch('/save-answer', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ answer: q3 })
+  })
+  .then(res => res.text())
+  .then(data => {
+    console.log(data);
+  })
+  .catch(err => {
+    console.error('서버 저장 실패:', err);
+  });
 }
 
 
