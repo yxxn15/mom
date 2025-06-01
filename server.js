@@ -1,13 +1,18 @@
 const express = require('express');
 const fs = require('fs');
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 // JSON 데이터 파싱
 app.use(express.json());
 
-// 정적 파일 제공 (index.html)
-app.use(express.static('public'));
+// 정적 파일 제공
+app.use(express.static(__dirname));
+
+// 루트 URL 처리
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + '/index.html');
+});
 
 // POST 요청 처리
 app.post('/save-answer', (req, res) => {
