@@ -1,9 +1,18 @@
 const express = require('express');
 const fs = require('fs');
+const mongoose = require('mongoose');
 const app = express();
 const port = process.env.PORT || 3000;
 
-// JSON 데이터 파싱
+// Connection string (MongoDB Atlas에서 복사한 것)
+const mongoURI = 'mongodb+srv://soyo2n5:r4564408@cluster0.mhrcekh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+
+// DB 연결
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('✅ MongoDB 연결 성공'))
+  .catch(err => console.error('❌ MongoDB 연결 실패:', err));
+
+  // JSON 데이터 파싱
 app.use(express.json());
 
 // 정적 파일 제공
