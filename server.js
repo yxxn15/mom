@@ -5,7 +5,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 // Connection string (MongoDB Atlas에서 복사한 것)
-const mongoURI = 'mongodb+srv://soyo2n5:r4564408@cluster0.mhrcekh.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0'
+const mongoURI = 'mongodb+srv://soyo2n5:r4564408@cluster0.mhrcekh.mongodb.net/happybirthday?retryWrites=true&w=majority&appName=Cluster0'
 
 // DB 연결
 mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
@@ -23,19 +23,25 @@ app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
 });
 
-// POST 요청 처리
-app.post('/save-answer', (req, res) => {
-  const answer = req.body.answer;
-  const timestamp = new Date().toISOString();
-  const entry = `날짜: ${timestamp}\n답변: ${answer}\n\n`;
-  fs.appendFile('answers.txt', entry, (err) => {
-    if (err) {
-      console.error(err);
-      res.status(500).send('저장 실패');
-    } else {
-      res.send('저장 완료');
-    }
-  });
+const answerSchema = new mongoose.Schema({
+  answer: String,
+  timestamp: String
+});
+
+const Answer = mongoose.model('Answer', answerSchema, 'answers'); // <- 세 번째 파라미터로 컬렉션 이름 지정
+
+app.post('/save-answer', async (req, res) => {
+  try {
+    const newAnswer = new Answer({
+      answer: req.body.answer,
+      timestamp: new Date().toISOString()
+    });
+    await newAnswer.save();
+    res.send('저장 완료');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('저장 실패');
+  }
 });
 
 app.listen(port, () => {
