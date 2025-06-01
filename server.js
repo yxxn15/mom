@@ -8,7 +8,7 @@ const port = process.env.PORT || 3000;
 const mongoURI = 'mongodb+srv://soyo2n5:r4564408@cluster0.mhrcekh.mongodb.net/happybirthday?retryWrites=true&w=majority&appName=Cluster0'
 
 // DB 연결
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoURI)
   .then(() => console.log('✅ MongoDB 연결 성공'))
   .catch(err => console.error('❌ MongoDB 연결 실패:', err));
 
