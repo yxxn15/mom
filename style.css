@@ -1,0 +1,112 @@
+/* style.css */
+body {
+    background-color: #fff8f0;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    padding: 20px;
+  }
+  
+  h1 {
+    color: #e74c3c;
+    margin-bottom: 20px;
+  }
+  
+  .main-photo {
+    max-width: 250px;
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+  }
+  
+  .message {
+    font-size: 18px;
+    color: #333;
+    line-height: 1.6;
+    white-space: pre-line;
+  }
+  /* 모달 전체 배경 */
+.modal {
+  display: none; /* 기본은 숨김 */
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.5);
+}
+
+/* 모달 내용 */
+.modal-content {
+  background-color: #fff8f0;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+  border-radius: 10px;
+  position: relative;
+}
+
+/* 닫기 버튼 */
+.close {
+  color: #aaa;
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+}
+.quiz-section {
+  background-color: #fff8f0;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-align: left;
+  max-width: 500px;
+  margin: 20px auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.quiz-section h2 {
+  text-align: center;
+  color: #e74c3c;
+}
+/* 중앙 정렬 컨테이너 */
+.container {
+  text-align: center;
+  padding: 20px;
+}
+
+/* 사진 크기/간격 */
+.main-photo {
+  width: 250px; /* 기존 max-width에서 고정 width로 조절 */
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  margin-bottom: 20px;
+}
+
+/* 버튼 */
+button {
+  margin-top: 0px;
+  margin-bottom: 20px;
+}
+
+/* 퀴즈 박스 */
+.quiz-section {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.photo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px; /* 사진과 버튼 사이 여백 */
+}
