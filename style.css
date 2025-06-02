@@ -4,6 +4,8 @@ body {
     font-family: 'Arial', sans-serif;
     text-align: center;
     padding: 20px;
+    padding: 20px;
+  font-size: 18px; /* 기본 폰트 크기 증가 */
   }
   
   h1 {
@@ -97,6 +99,11 @@ body {
 button {
   margin-top: 0px;
   margin-bottom: 20px;
+  font-size: 18px;
+}
+
+textarea {
+  font-size: 16px;
 }
 
 /* 퀴즈 박스 */
@@ -110,4 +117,48 @@ button {
   align-items: center;
   gap: 5px; /* 사진과 버튼 사이 여백 */
 }
->>>>>>> 1042a06 (Initial commit)
+.gift-section {
+  background-color: #fff8f0;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+  text-align: left;
+  max-width: 500px;
+  margin: 20px auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.gift-section h2 {
+  text-align: center;
+  color: #e74c3c;
+}
+
+.gift-section textarea {
+  width: 100%;
+  border-radius: 5px;
+  padding: 8px;
+  font-size: 16px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  resize: vertical;
+}
+
+.gift-section button {
+  display: block;
+  margin: 0 auto;
+  padding: 8px 16px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.gift-section button:hover {
+  background-color: #d63b2c;
+}
+
+.gift-section p {
+  text-align: center;
+}
