@@ -51,8 +51,16 @@
   <p>3. 올해 엄마가 가장 행복했던 순간은? </p>
   <textarea id="q3" rows="3" cols="50"></textarea><br><br>
 
-  <br>
   <button onclick="checkQuiz()">퀴즈 제출</button>
+</div>
+
+<div class="gift-section">
+  <h2>🎁 엄마가 받고 싶은 선물</h2>
+  <p>받고 싶은 선물이 있거나 원하는 것이 있다면 자유롭게 적어주세요.<br>
+    (이 항목은 선택이며 언제든지 다시 와서 답변을 입력해도 좋습니다)
+  </p>
+  <textarea id="gift" rows="3" cols="50"></textarea><br><br>
+  <button onclick="submitGift()">선물 제출</button>
 </div>
 
 </body>
@@ -92,21 +100,48 @@ function checkQuiz() {
 엄마가 받을 축하 선물은 ${prize}입니다.
 소윤이에게 선물을 받아가세요!`);
 
-  // 🔥 3번 답변 서버로 전송
+  // 답변 서버로 전송
   fetch('/save-answer', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    q1: q1Answer,
+    q2: q2Answer,
+    q3: q3,
+  })
+})
+.then(res => res.text())
+.then(data => {
+  alert(data);
+})
+.catch(err => {
+  console.error('서버 저장 실패:', err);
+});
+}
+
+function submitGift() {
+  const gift = document.getElementById("gift").value.trim();
+
+  if (gift === "") {
+    alert("내용을 입력해주세요!");
+    return;
+  }
+
+  fetch('/save-gift', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ answer: q3 })
+    body: JSON.stringify({ gift })
   })
   .then(res => res.text())
   .then(data => {
-    console.log(data);
+    alert(data);
+    document.getElementById("gift").value = "";
   })
   .catch(err => {
     console.error('서버 저장 실패:', err);
+    alert('저장 실패');
   });
 }
-
 
   function openModal() {
     document.getElementById("modal").style.display = "block";

@@ -24,20 +24,45 @@ app.get('/', (req, res) => {
 });
 
 const answerSchema = new mongoose.Schema({
-  answer: String,
+  answer1: String,
+  answer2: String,
+  answer3: String,
   timestamp: String
 });
 
-const Answer = mongoose.model('Answer', answerSchema, 'answers'); // <- 세 번째 파라미터로 컬렉션 이름 지정
+const Answer = mongoose.model('Answer', answerSchema, 'answers');
 
 app.post('/save-answer', async (req, res) => {
   try {
     const newAnswer = new Answer({
-      answer: req.body.answer,
+      answer1: req.body.q1,
+      answer2: req.body.q2,
+      answer3: req.body.q3,
       timestamp: new Date().toISOString()
     });
     await newAnswer.save();
     res.send('저장 완료');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('저장 실패');
+  }
+});
+
+const giftSchema = new mongoose.Schema({
+  gift: String,
+  timestamp: String
+});
+
+const Gift = mongoose.model('Gift', giftSchema, 'gifts');
+
+app.post('/save-gift', async (req, res) => {
+  try {
+    const newGift = new Gift({
+      gift: req.body.gift,
+      timestamp: new Date().toISOString()
+    });
+    await newGift.save();
+    res.send('선물이 저장되었습니다.');
   } catch (err) {
     console.error(err);
     res.status(500).send('저장 실패');
