@@ -111,11 +111,16 @@ function checkQuiz() {
 })
 .then(res => res.text())
 .then(data => {
-  alert(data);
+  // alert(data);
 })
 .catch(err => {
   console.error('서버 저장 실패:', err);
 });
+
+// 🔥 리셋 코드 추가
+  document.querySelectorAll('input[name="q1"]').forEach(input => input.checked = false);
+  document.querySelectorAll('input[name="q2"]').forEach(input => input.checked = false);
+  document.getElementById("q3").value = "";
 }
 
 function submitGift() {
