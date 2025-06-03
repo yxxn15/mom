@@ -3,6 +3,10 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 const app = express();
 const port = process.env.PORT || 3000;
+const timestamp = new Date();
+const timestampKST = new Date(timestamp.getTime() + 9 * 60 * 60 * 1000);
+console.log(timestampKST.toISOString());
+
 
 // Connection string (MongoDB Atlas에서 복사한 것)
 const mongoURI = 'mongodb+srv://soyo2n5:r4564408@cluster0.mhrcekh.mongodb.net/happybirthday?retryWrites=true&w=majority&appName=Cluster0'
