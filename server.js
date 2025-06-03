@@ -3,9 +3,9 @@ const fs = require('fs');
 const mongoose = require('mongoose');
 const app = express();
 const port = process.env.PORT || 3000;
-const timestamp = new Date();
-const timestampKST = new Date(timestamp.getTime() + 9 * 60 * 60 * 1000);
-console.log(timestampKST.toISOString());
+const now = new Date();
+const kstTime = new Date(now.getTime() + 9 * 60 * 60 * 1000);
+
 
 
 // Connection string (MongoDB Atlas에서 복사한 것)
