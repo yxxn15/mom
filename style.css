@@ -37,8 +37,16 @@ body {
   height: 100%;
   overflow: auto;
   background-color: rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(-30px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
 }
-
+/* 보여지는 상태일 때 추가될 클래스 */
+.modal.show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
 /* 모달 내용 */
 .modal-content {
   background-color: #fff8f0;
@@ -168,12 +176,22 @@ textarea {
 }
 
 /* style.css */
+.photo-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 100vh;
+  transition: all 0.5s ease;
+}
+
 .photo-wrapper.large {
   transform: scale(1.4);
-  transition: transform 0.5s ease;
+  height: 100vh;
 }
 
 .photo-wrapper.normal {
   transform: scale(1);
-  transition: transform 0.5s ease;
+  height: auto;
 }

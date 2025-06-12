@@ -150,18 +150,28 @@ function submitGift() {
 }
 
   function openModal() {
-  document.getElementById("modal").style.display = "block";
+  const modal = document.getElementById("modal");
+  modal.style.display = "block"; // 먼저 표시
+  // 강제로 리플로우를 일으켜 transition 적용
+  void modal.offsetWidth;
+  modal.classList.add("show");
+
   document.getElementById("quizSection").style.display = "block";
-  document.getElementById("giftSection").style.display = "block"; // 🎁 선물 섹션도 보여주기
-  
+  document.getElementById("giftSection").style.display = "block";
+
   const wrapper = document.getElementById("photoWrapper");
   wrapper.classList.remove("large");
   wrapper.classList.add("normal");
 }
 
-  function closeModal() {
-    document.getElementById("modal").style.display = "none";
-  }
+function closeModal() {
+  const modal = document.getElementById("modal");
+  modal.classList.remove("show");
+  // 애니메이션 끝난 후 display 제거
+  setTimeout(() => {
+    modal.style.display = "none";
+  }, 400); // transition 시간과 맞춤
+}
   function showQuiz() {
   document.getElementById('quizSection').style.display = 'block';
 }
