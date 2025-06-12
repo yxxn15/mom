@@ -4,7 +4,6 @@ body {
     font-family: 'Arial', sans-serif;
     text-align: center;
     padding: 20px;
-    padding: 20px;
   font-size: 18px; /* 기본 폰트 크기 증가 */
   }
   
@@ -14,11 +13,12 @@ body {
   }
   
   .main-photo {
-    max-width: 250px;
-    border-radius: 20px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    margin-bottom: 20px;
-  }
+  display: block;
+  margin: 0 auto 20px;
+  width: 250px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
   
   .message {
     font-size: 18px;
@@ -81,11 +81,11 @@ body {
 .close:focus {
   color: black;
 }
+
 .quiz-section {
   background-color: #fff8f0;
   padding: 20px;
   border-radius: 10px;
-  margin-top: 20px;
   text-align: left;
   max-width: 500px;
   margin: 20px auto;
@@ -102,14 +102,6 @@ body {
   padding: 20px;
 }
 
-/* 사진 크기/간격 */
-.main-photo {
-  width: 250px; /* 기존 max-width에서 고정 width로 조절 */
-  border-radius: 20px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  margin-bottom: 20px;
-}
-
 /* 버튼 */
 button {
   margin-top: 0px;
@@ -121,17 +113,6 @@ textarea {
   font-size: 16px;
 }
 
-/* 퀴즈 박스 */
-.quiz-section {
-  max-width: 500px;
-  margin: 0 auto;
-}
-.photo-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 5px; /* 사진과 버튼 사이 여백 */
-}
 .gift-section {
   background-color: #fff8f0;
   padding: 20px;
@@ -184,22 +165,23 @@ textarea {
 
 /* style.css */
 .photo-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.4);
+  transform-origin: center center;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  height: 100vh;
   transition: all 0.5s ease;
-}
-
-.photo-wrapper.large {
-  transform: scale(1.4);
-  transform-origin: center center;
+  text-align: center;
+  width: auto;
   height: 100vh;
 }
 
 .photo-wrapper.normal {
-  transform: scale(1);
+  transform: translate(-50%, 0%) scale(1); /* 상단으로 올림 */
   height: auto;
 }

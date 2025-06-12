@@ -8,7 +8,7 @@
 </head>
 <body>
   <div class="container">
-  <div class="photo-wrapper large" id="photoWrapper">
+  <div class="photo-wrapper" id="photoWrapper">
       <h1>🎉 사랑하는 엄마의 생일을 축하합니다! 🎉</h1>
     <img src="images/mom_photo.jpg" alt="엄마 사진" class="main-photo">
     <button onclick="openModal()">💌 편지를 확인해주세용 💌</button>
@@ -33,7 +33,6 @@
     </p>
   </div>
 </div>
-  </div>
   <div id="quizSection" class="quiz-section" style="display: none;">
   <h2>🎯 엄마 생일 축하 퀴즈!</h2>
 
@@ -151,18 +150,18 @@ function submitGift() {
 
   function openModal() {
   const modal = document.getElementById("modal");
-  modal.style.display = "block"; // 먼저 표시
-  // 강제로 리플로우를 일으켜 transition 적용
-  void modal.offsetWidth;
+  modal.style.display = "block";
+  // 🔥 여기에 show 클래스 추가!
+  void modal.offsetWidth; // 리플로우 강제 (애니메이션 적용용)
   modal.classList.add("show");
 
   document.getElementById("quizSection").style.display = "block";
   document.getElementById("giftSection").style.display = "block";
 
   const wrapper = document.getElementById("photoWrapper");
-  wrapper.classList.remove("large");
   wrapper.classList.add("normal");
 }
+
 
 function closeModal() {
   const modal = document.getElementById("modal");
@@ -171,9 +170,6 @@ function closeModal() {
   setTimeout(() => {
     modal.style.display = "none";
   }, 400); // transition 시간과 맞춤
-}
-  function showQuiz() {
-  document.getElementById('quizSection').style.display = 'block';
 }
 </script>
 
