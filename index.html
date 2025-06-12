@@ -8,8 +8,8 @@
 </head>
 <body>
   <div class="container">
-  <h1>🎉 사랑하는 엄마의 생일을 축하합니다! 🎉</h1>
-  <div class="photo-wrapper">
+  <div class="photo-wrapper large" id="photoWrapper">
+      <h1>🎉 사랑하는 엄마의 생일을 축하합니다! 🎉</h1>
     <img src="images/mom_photo.jpg" alt="엄마 사진" class="main-photo">
     <button onclick="openModal()">💌 편지를 확인해주세용 💌</button>
   </div>
@@ -20,19 +20,21 @@
   <div class="modal-content">
     <span class="close" onclick="closeModal()">&times;</span>
     <p class="message">
-      엄마 안뇽! 이렇게 편지를 써보기는 또 처음이네 ㅎㅎ  
-      내가 툴툴대거나 짜증내도 다가와주고 잘해줘서 고마워  
-      이번 엄마 생일이 내 시험이랑 겹쳐버려서ㅠㅠ
-      급하게 준비했지만 그래도 생일은 누구보다 축하해!  
-      오늘 하루 누구보다 행복한 하루 보냈길 바라고,,  
-      그래도 컴보과 딸의 나름 전공살린 첫 선물인데
-      추억으로 남았으면 좋겠다 :)   
-      내 엄마가 되어줘서 고마워😘 항상 사랑해!
+      엄마 안뇽! 이렇게 편지를 써보기는 또 처음이네ㅎㅎ  
+      내가 툴툴대거나 짜증내도 살갑게 다가와줘서 고마워  
+      뭐를 준비해야 엄마가 좋아할까 고민하다가 그래도 나름 명색이
+      컴보과인데 전공살린 첫 선물을 주기로 했징>_<
+      아직 어설퍼서 부족한 부분이 많지만
+      그래두 추억으로 남았으면 좋겠오
+      어제는 엄빠가 서프라이즈해주고 마치 내 생일처럼 행복했는데ㅋㅋ 
+      오늘은 엄마 생일이니까 누구보다 행복한 하루길 바라고,,  
+      내 엄마가 되어줘서 고마워😘 항상 사랑해!<br>
+      ps. 밑에 퀴즈 꼭 풀어봥 다 맞춰야돼!! 안그러면 삐질수도 잇음.
     </p>
   </div>
 </div>
   </div>
-  <div class="quiz-section">
+  <div id="quizSection" class="quiz-section" style="display: none;">
   <h2>🎯 엄마 생일 축하 퀴즈!</h2>
 
   <!-- 문제 1 -->
@@ -53,7 +55,7 @@
   <button onclick="checkQuiz()">퀴즈 제출</button>
 </div>
 
-<div class="gift-section">
+<div id="giftSection" class="gift-section" style="display: none;">
   <h2>🎁 엄마가 받고 싶은 선물</h2>
   <p>받고 싶은 선물이 있거나 원하는 것이 있다면 자유롭게 적어주세요.<br>
   (이 항목은 선택이며 언제든지 다시 와서 답변을 입력해도 좋습니다)
@@ -92,7 +94,7 @@ function checkQuiz() {
   if (correct === 3) prize = "100,000원";
   else if (correct === 2) prize = "50,000원";
   else if (correct === 1) prize = "30,000원";
-  else prize = "뽀뽀";
+  else prize = "무한한뽀뽀";
 
   // 결과 출력
   alert(`🎉 ${correct}문제 맞았습니다!
@@ -148,12 +150,21 @@ function submitGift() {
 }
 
   function openModal() {
-    document.getElementById("modal").style.display = "block";
-  }
+  document.getElementById("modal").style.display = "block";
+  document.getElementById("quizSection").style.display = "block";
+  document.getElementById("giftSection").style.display = "block"; // 🎁 선물 섹션도 보여주기
+  
+  const wrapper = document.getElementById("photoWrapper");
+  wrapper.classList.remove("large");
+  wrapper.classList.add("normal");
+}
 
   function closeModal() {
     document.getElementById("modal").style.display = "none";
   }
+  function showQuiz() {
+  document.getElementById('quizSection').style.display = 'block';
+}
 </script>
 
 
