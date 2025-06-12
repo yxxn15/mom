@@ -104,9 +104,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   padding: 20px;
-  min-height: 100vh;
 }
 
 
@@ -173,21 +171,17 @@ textarea {
 
 /* style.css */
 .photo-wrapper {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1.4);
-  transform-origin: center center;
+  position: relative;  /* ✅ 기존 absolute 제거 */
+  transform: none;     /* ✅ 중앙 배치 필요 시 flex 활용 */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  transition: all 0.5s ease;
   text-align: center;
   width: 100%;
-  max-width: 500px; /* ✅ 이 줄 추가 */
-  margin: 0 auto;    /* ✅ 이 줄 추가 */
+  max-width: 500px;
+  margin: 60px auto 20px;  /* ✅ 상단 여백 조절 가능 */
 }
 
 
