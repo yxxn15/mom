@@ -50,14 +50,21 @@ body {
 /* 모달 내용 */
 .modal-content {
   background-color: #fff8f0;
-  margin: 15% auto;
-  padding: 20px;
+  padding: 30px;
   border: 1px solid #888;
-  width: 80%;
-  max-width: 500px;
+  width: 90%;
+  max-width: 600px;
   border-radius: 10px;
-  position: relative;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  font-size: 18px;
+  line-height: 1.8;
+  text-align: center;
 }
+
 
 /* 닫기 버튼 */
 .close {
@@ -188,6 +195,7 @@ textarea {
 
 .photo-wrapper.large {
   transform: scale(1.4);
+  transform-origin: center center;
   height: 100vh;
 }
 
